@@ -17,7 +17,7 @@ spec:
   jwt_identity_base_field: sub
   jwt_policy_field_name: pol
   jwt_default_policies:
-    - tyk/jwt-policy
+    - tyk-v2/jwt-policy
 ---
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
@@ -38,7 +38,7 @@ spec:
   jwt_identity_base_field: sub
   jwt_policy_field_name: pol
   jwt_default_policies:
-    - tyk/jwt-policy
+    - tyk-v2/jwt-policy
   definition:
     key: x-api-version
     location: header
@@ -111,11 +111,11 @@ spec:
   quota_renewal_rate: -1
   access_rights_array:
     - name: httpbin-jwt1
-      namespace: tyk
+      namespace: tyk-v2
       versions:
         - Default
     - name: httpbin-jwt2
-      namespace: tyk
+      namespace: tyk-v2
       versions:
         - Default
         - v2
