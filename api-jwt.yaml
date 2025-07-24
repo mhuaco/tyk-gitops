@@ -1,0 +1,124 @@
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-jwt1
+spec:
+  name: httpbin-jwt1
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-jwt1
+    strip_listen_path: true
+  enable_jwt: true
+  strip_auth_data: true
+  jwt_signing_method: rsa
+  jwt_source: aHR0cHM6Ly9kZXYtMzQ3MDgxNTYub2t0YS5jb20vb2F1dGgyL2RlZmF1bHQvdjEva2V5cw==
+  jwt_identity_base_field: sub
+  jwt_policy_field_name: pol
+  jwt_default_policies:
+    - tyk/jwt-policy
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-jwt2
+spec:
+  name: httpbin-jwt2
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-jwt2
+    strip_listen_path: true
+  enable_jwt: true
+  strip_auth_data: true
+  jwt_signing_method: rsa
+  jwt_source: aHR0cHM6Ly9kZXYtMzQ3MDgxNTYub2t0YS5jb20vb2F1dGgyL2RlZmF1bHQvdjEva2V5cw==
+  jwt_identity_base_field: sub
+  jwt_policy_field_name: pol
+  jwt_default_policies:
+    - tyk/jwt-policy
+  definition:
+    key: x-api-version
+    location: header
+    strip_path: true
+  version_data:
+    default_version: ""
+    not_versioned: false
+    versions:
+      Default:
+        expires: ""
+        extended_paths: {}
+        ignore_endpoint_case: false
+        name: Default
+        override_target: ""
+        paths: {}
+        use_extended_paths: true
+      v2:
+        expires: ""
+        extended_paths:
+          white_list:
+          - ignore_case: false
+            method_actions:
+              GET:
+                action: reply
+                code: 200
+                data: "{\r\n\r\n\"msg\" : \"This is API jwt-api version 2\"\r\n\r\n}"
+                headers: {}
+            path: /get
+        ignore_endpoint_case: false
+        name: v2
+        override_target: ""
+        paths: {}
+        use_extended_paths: true
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: jwt-policy
+spec:
+  ### use single quotes to avoid YAML parsing issues with the hash symbol
+  name: 'DCC Custom Token Sharing Policy #DCC #HCRE'
+
+  ### see https://tyk.io/docs/api-management/automations/operator/#migration-of-existing-policy
+  id: 686bc1a9c26ad40001ae14a3
+
+  ### overridden by Tyk Operator
+  #org_id: 66056fcdeb290c0001e6d6cb
+
+  ### base64 encoded ID not supported according to the docs
+  #id: Y2MtY29ubmVjdG9ycy9kY2MtY3VzdG9tLXRva2Vuc2hhcmluZy1wb2xpY3kg=
+
+  ### becomes id field
+  #_id: 686bc1a9c26ad40001ae14a3
+
+  state: active
+  active: true
+  key_expires_in: 21600
+  partitions:
+    quota: true
+    rate_limit: true
+    complexity: false
+    acl: true
+    per_api: false
+  throttle_interval: -1
+  throttle_retry_limit: -1
+  max_query_depth: -1 
+  rate: -1
+  per: -1
+  quota_max: -1
+  quota_renewal_rate: -1
+  access_rights_array:
+    - name: httpbin-jwt1
+      namespace: tyk
+      versions:
+        - Default
+    - name: httpbin-jwt2
+      namespace: tyk
+      versions:
+        - Default
+        - v2
+  active: true
+  name: jwt-policy
+  state: active
