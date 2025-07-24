@@ -122,3 +122,5 @@ spec:
   active: true
   name: jwt-policy
   state: active
+  tags:
+    - hcre
