@@ -45,7 +45,7 @@ global:
     # Determines whether the pump component should be installed.
     pump: true
     # Determines whether Tyk Developer Portal component should be installed.
-    devPortal: true
+    devPortal: false
     # operator determines whether Tyk Operator component should be installed or not.
     # Tyk Operator needs cert-manager to be installed beforehand. Make sure that cert-manager is installed.
     # For further details, please refer to https://tyk.io/docs/tyk-stack/tyk-operator/installing-tyk-operator/
@@ -339,7 +339,7 @@ tyk-gateway:
       repository: tykio/tyk-gateway
 
       # image tag for Tyk Gateway
-      tag: v5.8.1
+      tag: v5.3.1
 
       # image pull policy for Tyk Gateway
       pullPolicy: IfNotPresent
@@ -1081,7 +1081,7 @@ tyk-dashboard:
       repository: tykio/tyk-dashboard
 
       # tag for Tyk Dashboard
-      tag: v5.8.1
+      tag: v5.3.1
       # image pull policy
       pullPolicy: Always
 
