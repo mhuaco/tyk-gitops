@@ -26,24 +26,24 @@ keywords:
 dependencies:
   - name: tyk-gateway
     version: 3.0.0
-    repository: file://../components/tyk-gateway
+    repository: https://helm.tyk.io/public/helm/charts
   - name: tyk-pump
     version: 3.0.0
-    repository: file://../components/tyk-pump
+    repository: https://helm.tyk.io/public/helm/charts
     condition: global.components.pump
   - name: tyk-dashboard
     version: 3.0.0
-    repository: file://../components/tyk-dashboard
+    repository: https://helm.tyk.io/public/helm/charts
   - name: tyk-bootstrap
     version: 3.0.0
-    repository: file://../components/tyk-bootstrap
+    repository: https://helm.tyk.io/public/helm/charts
   - name: tyk-dev-portal
     version: 3.0.0
-    repository: file://../components/tyk-dev-portal
+    repository: https://helm.tyk.io/public/helm/charts
     condition: global.components.devPortal
   - name: tyk-operator
     version: 1.2.0
-    repository: file://../components/tyk-operator
+    repository: https://helm.tyk.io/public/helm/charts
     condition: global.components.operator
 annotations:
   artifacthub.io/category: networking
