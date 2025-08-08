@@ -25,7 +25,7 @@ spec:
           image: tykio/tyk-gateway:v5.3.1
           ports:
             - containerPort: 8080
-          env:
+          extraEnvs:
             - name: TYK_GW_STORAGE_TYPE
               value: redis
             - name: TYK_GW_STORAGE_ADDRS
