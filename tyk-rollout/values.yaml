@@ -25,7 +25,7 @@ spec:
           image: tykio/tyk-gateway:v5.3.1
           ports:
             - containerPort: 8080
-          env:
+          extraEnvs:
             - name: TYK_GW_STORAGE_TYPE
               value: redis
             - name: TYK_GW_STORAGE_ADDRS
@@ -35,4 +35,5 @@ spec:
             - name: TYK_GW_STORAGE_DATABASE
               value: "0"
             - name: TYK_GW_STORAGE_PASSWORD
-              value: "xymjss3MSd"
+              value: xymjss3MSd
+
