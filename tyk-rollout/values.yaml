@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: tyk-gateway
-          image: tykio/tyk-gateway:v5.3.1
+          image: tykio/tyk-gateway:{{ .Values.tyk.gateway.image.tag }}
           ports:
             - containerPort: 8080
           extraEnvs:
@@ -36,4 +36,3 @@ spec:
               value: "0"
             - name: TYK_GW_STORAGE_PASSWORD
               value: xymjss3MSd
-
