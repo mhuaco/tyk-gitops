@@ -536,17 +536,17 @@ tyk-gateway:
       - name: TYK_GW_ENABLEJSVM
         value: "true"
       - name: NEW_ENV
-        #value: anything
-        valueFrom:
-          secretKeyRef:
-            name: my-secret-name       # Name of your Secret
-            key: my-secret-key         # Key inside the Secret
+        value: anything
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: my-secret-name       # Name of your Secret
+      #       key: my-secret-key         # Key inside the Secret
       
-      - name: TYK_GW_SECRETS
-        valueFrom:
-          secretKeyRef:
-            name: tyk-secrets
-            key: TYK_GW_SECRETS
+      # - name: TYK_GW_SECRETS
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: tyk-secrets
+      #       key: TYK_GW_SECRETS
 
       # - name: NEW_A
       #   valueFrom:
