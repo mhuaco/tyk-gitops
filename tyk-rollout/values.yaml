@@ -28,7 +28,7 @@ spec:
           extraEnvs:
             - name: TYK_GW_STORAGE_TYPE
               value: redis
-            - name: TYK_GW_STORAGE_ADDRS
+            - name: global.redis.addrs
               value: tyk-redis-data-master.tyk.svc.cluster.local:6379
             - name: TYK_GW_STORAGE_ENABLECLUSTER
               value: "false"
