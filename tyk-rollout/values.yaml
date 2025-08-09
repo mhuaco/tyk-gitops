@@ -93,7 +93,7 @@ global:
     #
     # Default value: redis.{{ .Release.Namespace }}.svc:6379
     addrs:
-        - tyk-redis-data-master.tyk.svc.cluster.local:6379
+        - tyk-redis-master.tyk.svc.cluster.local:6379
     #   Example using tyk simple redis chart
     #   - redis.tyk.svc:6379
     #   Example using bitnami/redis
