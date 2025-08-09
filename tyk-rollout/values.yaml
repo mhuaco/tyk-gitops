@@ -537,8 +537,6 @@ tyk-gateway:
         value: "true"
       - name: NEW_ENV
         value: anything
-      - name: TYK_GW_USEDBAPPCONFIGS
-        value: "false"
       #   valueFrom:
       #     secretKeyRef:
       #       name: my-secret-name       # Name of your Secret
@@ -867,10 +865,10 @@ tyk-bootstrap:
 
   bootstrap:
     # Trigger to control if we want to bootstrap the Developer Portal component using tyk-bootstrap
-    devPortal: true
+    devPortal: false
 
     # Trigger to control if we want to bootstrap the dashboard component using tyk-bootstrap
-    dashboard: true
+    dashboard: false
 
     # Trigger to control if we want to bootstrap the classic portal component using tyk-bootstrap
     portal: true
