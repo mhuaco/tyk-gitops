@@ -21,11 +21,13 @@ spec:
         app: tyk-gateway
     spec:
       containers:
-        - name: tyk-gateway
-          image: tykio/tyk-gateway:v5.8.1
-          ports:
-            - containerPort: 8080
+        # - name: tyk-gateway
+        #   image: tykio/tyk-gateway:v5.8.1
+        #   ports:
+        #     - containerPort: 8080
           extraEnvs:
+            - name: tyk-gateway.gateway.tag
+              value: "v5.8.1"
             - name: TYK_GW_STORAGE_TYPE
               value: redis
             - name: global.redis.addrs
@@ -36,5 +38,4 @@ spec:
               value: "0"
             - name: TYK_GW_STORAGE_PASSWORD
               value: xymjss3MSd
-            - name: tyk-gateway.gateway.tag
-              value: "v5.8.1"
+            
