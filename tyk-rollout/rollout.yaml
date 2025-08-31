@@ -36,3 +36,4 @@ spec:
               value: "0"
             - name: TYK_GW_STORAGE_PASSWORD
               value: xymjss3MSd
+            

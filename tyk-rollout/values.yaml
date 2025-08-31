@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: tyk-gateway
-          image: tykio/tyk-gateway:v5.8.1
+          image: tykio/tyk-gateway:v5.8.2
           ports:
             - containerPort: 8080
           extraEnvs:
