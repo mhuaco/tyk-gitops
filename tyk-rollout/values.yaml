@@ -29,7 +29,9 @@ spec:
             - name: TYK_GW_STORAGE_TYPE
               value: redis
             - name: TYK_GW_STORAGE_HOST
-              value: tyk-redis-master.tyk.svc.cluster.local:6379
+              value: tyk-redis-master.tyk.svc.cluster.local
+            - name: TYK_GW_STORAGE_PORT
+              value: 6379
             - name: TYK_GW_STORAGE_ENABLECLUSTER
               value: "false"
             - name: TYK_GW_STORAGE_DATABASE
