@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tyk-dashboard
+  namespace: tyk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tyk-dashboard
+  template:
+    metadata:
+      labels:
+        app: tyk-dashboard
+    spec:
+      containers:
+        - name: tyk-dashboard
+          image: tykio/tyk-dashboard:v5.3.11
+          ports:
+            - containerPort: 3000
+          env:
+            - name: TYK_DB_TYPE
+              value: redis
+            - name: TYK_DB_HOST
+              value: tyk-redis-master.tyk.svc.cluster.local
+            - name: TYK_DB_PORT
+              value: "6379"
+            - name: TYK_DB_PASSWORD
+              value: N3R7FfUCgS
