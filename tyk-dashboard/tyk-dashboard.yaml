@@ -19,6 +19,8 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: TYK_DB_MONGOURL
+              value: mongodb://tyk-mongo:27017/tyk_analytics
             - name: TYK_DB_REDISHOST
               value: tyk-redis-master.tyk.svc.cluster.local
             - name: TYK_DB_REDISPORT
