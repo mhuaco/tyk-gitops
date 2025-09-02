@@ -19,11 +19,9 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: TYK_DB_TYPE
-              value: redis
-            - name: TYK_DB_HOST
+            - name: TYK_DB_REDISHOST
               value: tyk-redis-master.tyk.svc.cluster.local
-            - name: TYK_DB_PORT
+            - name: TYK_DB_REDISPORT
               value: "6379"
-            - name: TYK_DB_PASSWORD
+            - name: TYK_DB_REDISPASSWORD
               value: N3R7FfUCgS
