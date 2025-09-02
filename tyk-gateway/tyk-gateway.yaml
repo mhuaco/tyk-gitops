@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: tyk-gateway
+  namespace: tyk
+spec:
+  replicas: 3
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: {duration: 30s}
+        - setWeight: 50
+        - pause: {duration: 30s}
+  selector:
+    matchLabels:
+      app: tyk-gateway
+  template:
+    metadata:
+      labels:
+        app: tyk-gateway
+    spec:
+      containers:
+        - name: tyk-gateway
+          image: tykio/tyk-gateway:v5.3.11
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TYK_GW_STORAGE_TYPE
+              value: redis
+            - name: TYK_GW_STORAGE_HOST
+              value: tyk-redis-master.tyk.svc.cluster.local
+            - name: TYK_GW_STORAGE_PORT
+              value: "6379"
+            - name: TYK_GW_STORAGE_ENABLECLUSTER
+              value: "false"
+            - name: TYK_GW_STORAGE_DATABASE
+              value: "0"
+            - name: TYK_GW_STORAGE_PASSWORD
+              value: N3R7FfUCgS
