@@ -1,10 +1,17 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: tyk-dashboard
   namespace: tyk
 spec:
-  replicas: 2
+  replicas: 3
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: {duration: 30s}
+        - setWeight: 50
+        - pause: {duration: 30s}
   selector:
     matchLabels:
       app: tyk-dashboard
@@ -19,11 +26,27 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: TYK_DB_MONGOURL
-              value: mongodb://tyk-mongo:27017/tyk_analytics
             - name: TYK_DB_REDISHOST
               value: tyk-redis-master.tyk.svc.cluster.local
             - name: TYK_DB_REDISPORT
               value: "6379"
+            - name: TYK_GW_STORAGE_ENABLECLUSTER
+              value: "false"
+            - name: TYK_GW_STORAGE_DATABASE
+              value: "0"
             - name: TYK_DB_REDISPASSWORD
-              value: N3R7FfUCgS
+              value: ""
+            - name: TYK_DB_LICENSEKEY
+              value: ""
+            - name: TYK_DB_MONGOURL
+              value: ""
+              
+            ### Tyk Gateway Connection Details
+            - name: TYK_DB_TYKAPI_HOST=http://tyk-gateway
+              value: ""
+            - name:  TYK_DB_TYKAPI_PORT=8080
+              value: ""
+            - name: TYK_DB_TYKAPI_SECRET
+              value: "352d20ee67be67f6340b4c0605b044b7"
+            - name: TYK_DB_NODESECRET
+              value: "352d20ee67be67f6340b4c0605b044b7"
