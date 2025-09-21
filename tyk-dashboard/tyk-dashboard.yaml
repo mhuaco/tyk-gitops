@@ -42,7 +42,7 @@ spec:
               value: ""
               
             ### Tyk Gateway Connection Details
-            - name: TYK_DB_TYKAPI_HOST=http://tyk-gateway
+            - name: TYK_DB_TYKAPI_HOST
               value: ""
             - name:  TYK_DB_TYKAPI_PORT=8080
               value: ""
