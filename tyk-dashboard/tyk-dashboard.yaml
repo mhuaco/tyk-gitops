@@ -39,7 +39,7 @@ spec:
             - name: TYK_DB_LICENSEKEY
               value: ""
             - name: TYK_DB_MONGOURL
-              value: ""
+              value: "mongodb://root:JwRkKqU8qM@mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin"
               
             ### Tyk Gateway Connection Details
             - name: TYK_DB_TYKAPI_HOST
