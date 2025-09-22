@@ -35,7 +35,7 @@ spec:
             - name: TYK_GW_STORAGE_DATABASE
               value: "0"
             - name: TYK_DB_REDISPASSWORD
-              value: ""
+              value: "IiDe59m6bI"
             - name: TYK_DB_LICENSEKEY
               value: ""
             - name: TYK_DB_MONGOURL
